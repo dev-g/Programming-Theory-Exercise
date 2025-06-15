@@ -1,9 +1,12 @@
 public class LightBulb
 {
+    // ENCAPSULATION
+
     public bool IsOn => _isOn;
 
     private bool _isOn = false;
-    
+
+    // ENCAPSULATION
 
     public virtual void SetPower(bool on)
     {
@@ -14,6 +17,8 @@ public class LightBulb
     {
         SetPower(!_isOn);
     }
+
+    // POLYMORPHISM
 
     public virtual string DescribeState()
     {

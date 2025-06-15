@@ -12,6 +12,8 @@ enum LightBulbType
 
 public class LightBulbController : MonoBehaviour
 {
+    // ENCAPSULATION
+
     [SerializeField]
     private LightBulbType _type;
 
@@ -66,6 +68,8 @@ public class LightBulbController : MonoBehaviour
         _stateText.text = _bulb.DescribeState().Replace(",", "\n");
         _powerToggle.isOn = _bulb.IsOn;
 
+        // POLYMORPHISM
+
         if (_bulb is ColorChangingDimmableLightBulb ccBulb)
         {
             SetPowerLevel(ccBulb.IsOn, ccBulb.PowerPercent, ccBulb.Color);
@@ -80,11 +84,15 @@ public class LightBulbController : MonoBehaviour
         }
     }
 
+    // ABSTRACTION
+
     private void EnableDimming(DimmableLightBulb bulb)
     {
         _powerSlider.gameObject.SetActive(true);
         _powerSlider.onValueChanged.AddListener((level) => { bulb.SetPower((int)(level)); });
     }
+
+    // ABSTRACTION
 
     private void EnableColorChanging(ColorChangingDimmableLightBulb bulb)
     {
